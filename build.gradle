@@ -10,3 +10,10 @@ sourceCompatibility = 1.8
 dependencies {
     compile project(":owmclient.core")
 }
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
