@@ -28,8 +28,6 @@ public class WeatherController {
     public WeatherResponse getCityTemperature(@RequestParam(name = "cityName") String cityName,
                                      @RequestParam(required = false) String unit) throws IOException {
 
-
-
         return client.getCurrentCityWeather(cityName, UnitFormat.valueOf(unit));
     }
 

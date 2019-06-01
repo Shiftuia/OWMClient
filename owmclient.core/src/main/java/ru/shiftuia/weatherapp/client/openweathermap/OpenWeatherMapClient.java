@@ -14,9 +14,9 @@ import java.io.IOException;
 public class OpenWeatherMapClient {
 
     @Value("${openweathermap.api.url}")
-    private String openWeatherMapApiUrl;
+    private String apiUrl;
     @Value("${openweathermap.api.key}")
-    private String openWeatherMapApiKey;
+    private String apiKey;
 
     private String weatherCallUrl;
 
@@ -25,7 +25,7 @@ public class OpenWeatherMapClient {
 
     @PostConstruct
     public void post() {
-        this.weatherCallUrl = openWeatherMapApiUrl + "/weather";
+        this.weatherCallUrl = apiUrl + "/weather";
     }
 
     public WeatherResponse getCurrentCityWeather(String cityName, UnitFormat unitFormat) throws IOException {
@@ -34,7 +34,7 @@ public class OpenWeatherMapClient {
                 .fromUriString(weatherCallUrl)
                 .queryParam("q", cityName)
                 .queryParam("units", unitFormat.getValue())
-                .queryParam("APPID", openWeatherMapApiKey);
+                .queryParam("APPID", apiKey);
 
         String response = restTemplate.getForObject(builder.toUriString(), String.class);
 
